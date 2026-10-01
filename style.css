@@ -1,11 +1,11 @@
-/* =========================================
+/* ========================================
    CONFIGURACIÓN GENERAL
-========================================= */
+======================================== */
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -13,20 +13,118 @@ html {
 }
 
 body {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-
     font-family: Georgia, "Times New Roman", serif;
+    background: #fff7fa;
+    color: #4a2631;
+    overflow-x: hidden;
+}
 
-    background: #fff5f7;
-    color: #3d2028;
+button,
+a {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
 }
 
 
-/* =========================================
+/* ========================================
+   PANTALLA DE BIENVENIDA
+======================================== */
+
+.bienvenida {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(circle at top, #ffdce8, transparent 45%),
+        linear-gradient(135deg, #fff0f5, #ffd5e2);
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+.bienvenida.ocultar {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.bienvenida-corazon {
+    font-size: 80px;
+
+    animation:
+        latido 1.4s infinite;
+}
+
+.bienvenida-pequeno {
+    margin-top: 15px;
+
+    font-size: 13px;
+    letter-spacing: 4px;
+
+    color: #a04d68;
+}
+
+.bienvenida h1 {
+    margin: 12px 0;
+
+    font-size: clamp(50px, 10vw, 90px);
+
+    color: #9e3152;
+}
+
+.bienvenida p {
+    font-size: 20px;
+    line-height: 1.7;
+
+    color: #633746;
+}
+
+.boton-abrir {
+    margin-top: 30px;
+
+    padding: 15px 38px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: #b83d61;
+    color: white;
+
+    font-size: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(184, 61, 97, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.boton-abrir:hover {
+    transform: translateY(-4px) scale(1.04);
+
+    box-shadow:
+        0 15px 35px rgba(184, 61, 97, 0.35);
+}
+
+
+/* ========================================
    BOTÓN DE MÚSICA
-========================================= */
+======================================== */
 
 .boton-musica {
     position: fixed;
@@ -34,24 +132,26 @@ body {
     top: 20px;
     right: 20px;
 
-    z-index: 1000;
+    z-index: 9000;
+
+    padding: 11px 18px;
 
     border: none;
-    border-radius: 50px;
+    border-radius: 30px;
 
-    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.9);
 
-    background: #e91e63;
-    color: white;
+    color: #9e3152;
 
     font-size: 14px;
-    font-weight: bold;
 
-    cursor: pointer;
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.12);
 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
 
-    transition: 0.3s;
+    transition:
+        transform 0.3s ease;
 }
 
 .boton-musica:hover {
@@ -59,122 +159,109 @@ body {
 }
 
 
-/* =========================================
+/* ========================================
    PORTADA
-========================================= */
+======================================== */
 
 .portada {
-    position: relative;
-
     min-height: 100vh;
-    width: 100%;
 
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 
-    padding: 80px 20px 60px;
+    position: relative;
+
+    padding: 80px 20px 50px;
 
     text-align: center;
 
     background:
-        radial-gradient(
-            circle at top,
-            #ffd6e3,
-            #fff5f7 55%,
-            #ffffff
-        );
-
-    overflow: hidden;
-}
-
-.contenido-portada {
-    width: 100%;
-    max-width: 850px;
-
-    position: relative;
-    z-index: 2;
+        radial-gradient(circle at 20% 20%, #ffe4ec, transparent 30%),
+        radial-gradient(circle at 80% 80%, #ffd7e3, transparent 30%),
+        linear-gradient(135deg, #fff8fa, #ffeaf1);
 }
 
 .corazones {
-    position: absolute;
+    font-size: 28px;
 
-    top: 15%;
+    margin-bottom: 25px;
 
-    width: 100%;
+    animation:
+        aparecer 1.5s ease;
+}
 
-    font-size: clamp(20px, 4vw, 35px);
+.contenido-portada {
+    max-width: 800px;
 
-    opacity: 0.7;
-
-    letter-spacing: 15px;
+    animation:
+        subir 1.2s ease;
 }
 
 .pequeno,
 .etiqueta {
     font-size: 13px;
-    letter-spacing: 3px;
-    font-weight: bold;
 
-    color: #c2185b;
+    letter-spacing: 4px;
 
-    margin-bottom: 15px;
+    color: #a04d68;
 }
 
 .portada h1 {
-    font-size: clamp(55px, 9vw, 110px);
+    margin: 15px 0 5px;
+
+    font-size: clamp(60px, 12vw, 110px);
+
+    color: #9e3152;
 
     line-height: 1;
-
-    color: #b71c4d;
-
-    margin-bottom: 20px;
 }
 
 .portada h1 span {
-    font-size: 0.6em;
+    font-size: 0.65em;
 }
 
 .portada h2 {
-    font-size: clamp(24px, 4vw, 42px);
+    margin-bottom: 20px;
+
+    font-size: clamp(25px, 5vw, 40px);
 
     font-weight: normal;
 
-    color: #632b3a;
-
-    margin-bottom: 20px;
+    color: #633746;
 }
 
 .fecha {
-    font-size: clamp(15px, 2vw, 20px);
-
     margin-bottom: 35px;
 
-    color: #76505b;
+    font-size: 18px;
+
+    color: #7b5360;
 }
 
 .boton {
     display: inline-block;
 
-    padding: 15px 28px;
+    padding: 15px 30px;
 
-    border-radius: 50px;
+    border-radius: 40px;
 
-    background: #e91e63;
+    background: #b83d61;
+
     color: white;
 
     text-decoration: none;
 
-    font-size: 16px;
-    font-weight: bold;
+    box-shadow:
+        0 10px 25px rgba(184, 61, 97, 0.25);
 
-    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
-
-    transition: 0.3s;
+    transition:
+        transform 0.3s ease;
 }
 
 .boton:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 }
 
 .flecha {
@@ -182,180 +269,158 @@ body {
 
     bottom: 25px;
 
-    font-size: 35px;
+    font-size: 30px;
 
-    animation: bajar 1.5s infinite;
-}
-
-@keyframes bajar {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(10px);
-    }
+    animation:
+        flecha 1.5s infinite;
 }
 
 
-/* =========================================
+/* ========================================
    CARTA
-========================================= */
+======================================== */
 
 .carta-seccion {
-    width: 100%;
+    padding: 100px 20px;
 
-    padding: 90px 20px;
-
-    display: flex;
-    justify-content: center;
-
-    background: #ffffff;
+    background: #fff;
 }
 
 .carta {
-    width: 100%;
     max-width: 760px;
 
-    padding: clamp(30px, 6vw, 70px);
+    margin: auto;
 
-    background: #fffafa;
+    padding: 55px;
 
-    border-radius: 20px;
+    border-radius: 25px;
+
+    background: #fff9fb;
 
     box-shadow:
-        0 10px 40px rgba(120, 30, 60, 0.12);
+        0 20px 60px rgba(120, 45, 70, 0.1);
 
     text-align: center;
 }
 
 .carta h2 {
-    font-size: clamp(30px, 5vw, 45px);
+    margin: 15px 0;
 
-    color: #b71c4d;
+    font-size: 40px;
 
-    margin-bottom: 20px;
+    color: #9e3152;
 }
 
 .linea {
-    width: 80px;
+    width: 70px;
     height: 3px;
 
-    margin: 0 auto 30px;
+    margin: 20px auto 30px;
 
-    background: #e91e63;
+    border-radius: 5px;
 
-    border-radius: 10px;
+    background: #d36b88;
 }
 
 .carta p:not(.etiqueta):not(.firma) {
-    font-size: clamp(16px, 2vw, 19px);
-
-    line-height: 1.8;
-
     margin-bottom: 20px;
 
-    color: #54363f;
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    color: #68434f;
 }
 
 .te-amo {
     margin: 35px 0;
 
-    font-size: clamp(32px, 7vw, 60px);
+    font-size: 40px;
 
-    font-weight: bold;
+    color: #b83d61;
 
-    color: #e91e63;
+    animation:
+        latido 1.5s infinite;
 }
 
 .firma {
-    margin-top: 30px;
-
     font-size: 18px;
 
-    color: #76505b;
+    line-height: 1.7;
 }
 
 
-/* =========================================
+/* ========================================
    CONTADOR
-========================================= */
+======================================== */
 
 .contador-seccion {
-    width: 100%;
-
-    padding: 90px 20px;
+    padding: 100px 20px;
 
     text-align: center;
 
     background:
         linear-gradient(
             135deg,
-            #fff0f4,
-            #ffe1ea
+            #ffe5ed,
+            #fff5f8
         );
 }
 
 .contador-contenido {
-    width: 100%;
-    max-width: 900px;
+    max-width: 950px;
 
     margin: auto;
 }
 
 .contador-contenido h2 {
-    font-size: clamp(30px, 5vw, 50px);
+    margin: 15px 0;
 
-    color: #b71c4d;
+    font-size: clamp(35px, 7vw, 55px);
 
-    margin-bottom: 10px;
+    color: #9e3152;
 }
 
 .fecha-inicio {
+    margin-bottom: 40px;
+
     font-size: 18px;
 
-    color: #76505b;
-
-    margin-bottom: 35px;
+    color: #77515e;
 }
 
-
-/* CONTENEDOR DEL CONTADOR */
-
 .contador {
-    width: 100%;
-
     display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
-    gap: 15px;
+    gap: 18px;
 
-    margin: 30px auto;
+    max-width: 800px;
+
+    margin: auto;
 }
 
 .tiempo {
-    padding: 25px 10px;
+    padding: 25px 15px;
 
-    background: white;
+    border-radius: 20px;
 
-    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.8);
 
     box-shadow:
-        0 8px 25px rgba(120, 30, 60, 0.1);
+        0 10px 30px rgba(100, 30, 50, 0.08);
 }
 
 .tiempo span {
     display: block;
 
-    font-size: clamp(28px, 5vw, 55px);
+    font-size: clamp(35px, 6vw, 55px);
 
     font-weight: bold;
 
-    color: #e91e63;
+    color: #b83d61;
 }
 
 .tiempo small {
@@ -365,117 +430,96 @@ body {
 
     font-size: 14px;
 
-    color: #76505b;
+    color: #76515d;
 }
 
 .texto-contador {
-    margin: 25px 0;
-
-    font-size: 18px;
+    margin: 30px 0;
 }
 
 
-/* =========================================
+/* ========================================
    BOTÓN SORPRESA
-========================================= */
+======================================== */
 
 .boton-sorpresa {
+    padding: 15px 28px;
+
     border: none;
+    border-radius: 40px;
 
-    padding: 15px 25px;
-
-    border-radius: 50px;
-
-    background: #e91e63;
+    background: #b83d61;
 
     color: white;
 
     font-size: 16px;
 
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-
-    box-shadow:
-        0 8px 20px rgba(233, 30, 99, 0.25);
+    transition:
+        transform 0.3s ease;
 }
 
 .boton-sorpresa:hover {
     transform: scale(1.05);
 }
 
-
-/* =========================================
-   MENSAJE SORPRESA
-========================================= */
-
 .mensaje-sorpresa {
     max-width: 600px;
 
+    max-height: 0;
+
     margin: 25px auto 0;
 
-    padding: 30px;
+    overflow: hidden;
+
+    opacity: 0;
+
+    padding: 0;
 
     border-radius: 20px;
 
     background: white;
 
-    box-shadow:
-        0 8px 30px rgba(120, 30, 60, 0.12);
-
-    opacity: 0;
-
-    max-height: 0;
-
-    overflow: hidden;
-
-    transform: translateY(-10px);
-
     transition:
-        opacity 0.5s,
-        max-height 0.5s,
-        transform 0.5s;
+        max-height 0.8s ease,
+        opacity 0.6s ease,
+        padding 0.6s ease;
 }
 
 .mensaje-sorpresa.mostrar {
-    opacity: 1;
-
     max-height: 500px;
 
-    transform: translateY(0);
+    padding: 30px;
+
+    opacity: 1;
 }
 
 .mensaje-sorpresa h3 {
-    color: #e91e63;
+    margin-bottom: 15px;
 
     font-size: 28px;
 
-    margin-bottom: 15px;
+    color: #b83d61;
 }
 
 .mensaje-sorpresa p {
-    line-height: 1.7;
+    margin-bottom: 12px;
 
-    margin-bottom: 15px;
+    line-height: 1.7;
 }
 
 
-/* =========================================
-   FOTOS
-========================================= */
+/* ========================================
+   GALERÍA
+======================================== */
 
 .fotos-seccion {
-    width: 100%;
+    padding: 100px 20px;
 
-    padding: 90px 20px;
-
-    background: white;
+    background: #fff;
 }
 
 .titulo-fotos {
-    max-width: 800px;
+    max-width: 700px;
 
     margin: 0 auto 50px;
 
@@ -483,55 +527,48 @@ body {
 }
 
 .titulo-fotos h2 {
-    font-size: clamp(30px, 5vw, 50px);
+    margin: 15px 0;
 
-    color: #b71c4d;
+    font-size: clamp(35px, 7vw, 55px);
 
-    margin-bottom: 15px;
+    color: #9e3152;
 }
 
 .titulo-fotos > p:last-child {
-    font-size: 18px;
+    line-height: 1.7;
 
-    line-height: 1.6;
-
-    color: #76505b;
+    color: #72505c;
 }
 
-
-/* =========================================
-   GALERÍA
-========================================= */
-
 .galeria {
-    width: 100%;
-    max-width: 1100px;
-
-    margin: auto;
-
     display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap: 25px;
+    gap: 30px;
+
+    max-width: 1000px;
+
+    margin: auto;
 }
 
 .foto {
     overflow: hidden;
 
-    border-radius: 20px;
+    border-radius: 25px;
 
-    background: #fff;
+    background: white;
 
     box-shadow:
-        0 8px 30px rgba(120, 30, 60, 0.12);
+        0 15px 40px rgba(100, 30, 50, 0.12);
 
-    transition: 0.3s;
+    transition:
+        transform 0.4s ease;
 }
 
 .foto:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
 }
 
 .foto img {
@@ -542,62 +579,238 @@ body {
     height: 350px;
 
     object-fit: cover;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.5s ease;
+}
+
+.foto:hover img {
+    transform: scale(1.04);
 }
 
 .foto-info {
     padding: 20px;
+
+    text-align: center;
 }
 
 .foto-info h3 {
-    color: #b71c4d;
+    margin-bottom: 8px;
 
-    margin-bottom: 10px;
-
-    font-size: 21px;
+    color: #9e3152;
 }
 
 .foto-info p {
     line-height: 1.6;
 
-    color: #76505b;
+    color: #72505c;
 }
 
 
-/* =========================================
-   FINAL
-========================================= */
+/* ========================================
+   SORPRESA FINAL
+======================================== */
 
-.final {
-    width: 100%;
+.sorpresa-final {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     padding: 100px 20px;
 
     text-align: center;
 
     background:
-        linear-gradient(
-            135deg,
-            #b71c4d,
-            #e91e63
-        );
-
-    color: white;
+        radial-gradient(circle at center, #ffdce7, transparent 55%),
+        linear-gradient(135deg, #fff1f5, #ffdce7);
 }
 
-.final-contenido {
-    width: 100%;
-    max-width: 800px;
-
-    margin: auto;
+.sorpresa-contenido {
+    max-width: 750px;
 }
 
-.corazon-grande {
-    font-size: clamp(60px, 12vw, 110px);
+.corazon-final {
+    font-size: 85px;
 
     margin-bottom: 20px;
 
-    animation: latido 1.5s infinite;
+    animation:
+        latido 1.4s infinite;
 }
+
+.sorpresa-contenido h2 {
+    margin: 20px 0;
+
+    font-size: clamp(35px, 7vw, 60px);
+
+    color: #9e3152;
+}
+
+.sorpresa-contenido > p:not(.etiqueta) {
+    margin-bottom: 25px;
+
+    font-size: 19px;
+
+    line-height: 1.8;
+
+    color: #694450;
+}
+
+.boton-final {
+    padding: 17px 30px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: #b83d61;
+
+    color: white;
+
+    font-size: 17px;
+
+    box-shadow:
+        0 10px 30px rgba(184, 61, 97, 0.25);
+
+    transition:
+        transform 0.3s ease;
+}
+
+.boton-final:hover {
+    transform: scale(1.05);
+}
+
+.mensaje-final {
+    display: none;
+
+    margin-top: 40px;
+
+    padding: 45px 25px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 20px 60px rgba(100, 30, 50, 0.15);
+
+    animation:
+        aparecer 1s ease;
+}
+
+.mensaje-final.mostrar {
+    display: block;
+}
+
+.lluvia-corazones {
+    margin-bottom: 25px;
+
+    font-size: 28px;
+
+    letter-spacing: 8px;
+
+    animation:
+        flotar 2s infinite;
+}
+
+.mensaje-final h2 {
+    margin-bottom: 20px;
+}
+
+.mensaje-final p {
+    margin-bottom: 15px;
+
+    font-size: 20px;
+}
+
+.mensaje-final .grande {
+    font-size: 32px;
+
+    font-weight: bold;
+
+    color: #b83d61;
+}
+
+.final-amor {
+    margin: 30px 0;
+
+    font-size: 45px;
+
+    font-weight: bold;
+
+    color: #b83d61;
+
+    animation:
+        latido 1.4s infinite;
+}
+
+.firma-final {
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   MODAL DE FOTOS
+======================================== */
+
+.modal-foto {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 11000;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    background: rgba(30, 10, 20, 0.9);
+}
+
+.modal-foto.mostrar {
+    display: flex;
+}
+
+.modal-foto img {
+    max-width: 95%;
+    max-height: 90vh;
+
+    object-fit: contain;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4);
+
+    animation:
+        zoom 0.4s ease;
+}
+
+.cerrar-foto {
+    position: absolute;
+
+    top: 20px;
+    right: 30px;
+
+    color: white;
+
+    font-size: 45px;
+
+    cursor: pointer;
+
+    line-height: 1;
+}
+
+
+/* ========================================
+   ANIMACIONES
+======================================== */
 
 @keyframes latido {
 
@@ -611,61 +824,171 @@ body {
     }
 }
 
-.final h2 {
-    font-size: clamp(30px, 5vw, 55px);
+@keyframes aparecer {
 
-    margin-bottom: 20px;
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-.final p {
-    font-size: clamp(17px, 2.5vw, 21px);
+@keyframes subir {
 
-    line-height: 1.7;
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
-    margin-bottom: 20px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.frase {
-    font-style: italic;
+@keyframes flecha {
 
-    margin-top: 30px;
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
 }
 
-.firma-final {
-    font-weight: bold;
+@keyframes flotar {
 
-    margin-top: 40px;
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes zoom {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 
-/* =========================================
+/* ========================================
    CORAZONES FLOTANTES
-========================================= */
+======================================== */
 
-body > div {
+.corazon-flotante {
+    position: fixed;
+
+    bottom: -40px;
+
     pointer-events: none;
+
+    z-index: 8000;
+
+    animation:
+        subirCorazon 6s linear forwards;
+}
+
+@keyframes subirCorazon {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0.8;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(25deg);
+
+        opacity: 0;
+    }
 }
 
 
-/* =========================================
-   TABLETS
-========================================= */
+/* ========================================
+   TABLET
+======================================== */
 
 @media (max-width: 768px) {
 
-    .portada {
-        min-height: 100svh;
+    .carta {
+        padding: 40px 25px;
+    }
 
-        padding: 100px 20px 60px;
+    .contador {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .galeria {
+        grid-template-columns:
+            1fr;
+    }
+
+    .foto img {
+        height: 320px;
     }
 
     .boton-musica {
         top: 12px;
         right: 12px;
 
-        padding: 10px 15px;
+        font-size: 12px;
 
-        font-size: 13px;
+        padding: 9px 13px;
+    }
+}
+
+
+/* ========================================
+   CELULARES
+======================================== */
+
+@media (max-width: 600px) {
+
+    .portada {
+        padding-top: 90px;
+    }
+
+    .corazones {
+        font-size: 22px;
+    }
+
+    .fecha {
+        font-size: 16px;
+    }
+
+    .carta-seccion,
+    .contador-seccion,
+    .fotos-seccion,
+    .sorpresa-final {
+        padding: 70px 15px;
+    }
+
+    .carta {
+        padding: 35px 20px;
+    }
+
+    .carta p:not(.etiqueta):not(.firma) {
+        font-size: 16px;
     }
 
     .contador {
@@ -673,145 +996,7 @@ body > div {
     }
 
     .tiempo {
-        padding: 20px 8px;
-    }
-
-    .foto img {
-        height: 300px;
-    }
-}
-
-
-/* =========================================
-   CELULARES
-========================================= */
-
-@media (max-width: 600px) {
-
-    body {
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-
-    /* MÚSICA */
-
-    .boton-musica {
-        top: 10px;
-        right: 10px;
-
-        padding: 9px 13px;
-
-        font-size: 12px;
-    }
-
-
-    /* PORTADA */
-
-    .portada {
-        min-height: 100svh;
-
-        padding:
-            100px
-            18px
-            60px;
-    }
-
-    .corazones {
-        top: 12%;
-
-        font-size: 18px;
-
-        letter-spacing: 5px;
-    }
-
-    .pequeno {
-        font-size: 10px;
-
-        letter-spacing: 2px;
-    }
-
-    .portada h1 {
-        font-size: clamp(48px, 16vw, 75px);
-
-        word-break: normal;
-    }
-
-    .portada h2 {
-        font-size: 25px;
-    }
-
-    .fecha {
-        font-size: 15px;
-    }
-
-    .boton {
-        width: 100%;
-        max-width: 300px;
-
-        padding: 14px 18px;
-
-        font-size: 15px;
-    }
-
-
-    /* CARTA */
-
-    .carta-seccion {
-        padding: 60px 15px;
-    }
-
-    .carta {
-        padding: 30px 20px;
-
-        border-radius: 15px;
-    }
-
-    .carta h2 {
-        font-size: 32px;
-    }
-
-    .carta p:not(.etiqueta):not(.firma) {
-        font-size: 16px;
-
-        line-height: 1.7;
-
-        text-align: left;
-    }
-
-    .te-amo {
-        font-size: 40px;
-    }
-
-
-    /* CONTADOR */
-
-    .contador-seccion {
-        padding: 60px 15px;
-    }
-
-    .contador-contenido h2 {
-        font-size: 32px;
-    }
-
-    .fecha-inicio {
-        font-size: 16px;
-    }
-
-    .contador {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 12px;
-
-        max-width: 400px;
-    }
-
-    .tiempo {
-        padding: 18px 8px;
-
-        border-radius: 15px;
+        padding: 20px 10px;
     }
 
     .tiempo span {
@@ -819,118 +1004,64 @@ body > div {
     }
 
     .tiempo small {
-        font-size: 13px;
-    }
-
-    .texto-contador {
-        font-size: 16px;
-
-        line-height: 1.6;
-    }
-
-    .boton-sorpresa {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .mensaje-sorpresa {
-        padding: 25px 18px;
-    }
-
-
-    /* FOTOS */
-
-    .fotos-seccion {
-        padding: 60px 15px;
-    }
-
-    .titulo-fotos {
-        margin-bottom: 35px;
-    }
-
-    .titulo-fotos h2 {
-        font-size: 32px;
-    }
-
-    .titulo-fotos > p:last-child {
-        font-size: 16px;
-    }
-
-    .galeria {
-
-        grid-template-columns:
-            1fr;
-
-        gap: 20px;
-    }
-
-    .foto {
-        border-radius: 15px;
+        font-size: 12px;
     }
 
     .foto img {
-        width: 100%;
-
-        height: auto;
-
-        max-height: 450px;
-
-        object-fit: cover;
+        height: 280px;
     }
 
-    .foto-info {
-        padding: 18px;
+    .mensaje-final {
+        padding: 35px 18px;
     }
 
-
-    /* FINAL */
-
-    .final {
-        padding: 75px 20px;
+    .mensaje-final .grande {
+        font-size: 27px;
     }
 
-    .final h2 {
-        font-size: 32px;
+    .final-amor {
+        font-size: 35px;
     }
 
-    .final p {
-        font-size: 17px;
-    }
 }
 
 
-/* =========================================
+/* ========================================
    CELULARES PEQUEÑOS
-========================================= */
+======================================== */
 
 @media (max-width: 380px) {
 
-    .portada {
-        padding-left: 15px;
-        padding-right: 15px;
+    .bienvenida h1 {
+        font-size: 55px;
+    }
+
+    .bienvenida p {
+        font-size: 17px;
     }
 
     .portada h1 {
-        font-size: 46px;
+        font-size: 55px;
     }
 
     .portada h2 {
-        font-size: 22px;
+        font-size: 25px;
     }
 
     .contador {
-        gap: 8px;
+        gap: 7px;
+    }
+
+    .tiempo {
+        padding: 15px 5px;
     }
 
     .tiempo span {
-        font-size: 30px;
+        font-size: 28px;
     }
 
-    .tiempo small {
-        font-size: 11px;
+    .foto img {
+        height: 240px;
     }
 
-    .carta {
-        padding: 25px 16px;
-    }
 }
