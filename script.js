@@ -1,8 +1,28 @@
 /* ========================================
-   FECHA DE INICIO DE LA RELACIÓN
+   FECHA DE INICIO
 ======================================== */
 
 const fechaInicio = new Date("2024-10-27T00:00:00");
+
+
+/* ========================================
+   PANTALLA DE BIENVENIDA
+======================================== */
+
+const bienvenida =
+    document.getElementById("bienvenida");
+
+const abrirPagina =
+    document.getElementById("abrirPagina");
+
+
+abrirPagina.addEventListener("click", function () {
+
+    bienvenida.classList.add("ocultar");
+
+    reproducirMusica();
+
+});
 
 
 /* ========================================
@@ -13,27 +33,36 @@ function actualizarContador() {
 
     const ahora = new Date();
 
-    let diferencia = ahora - fechaInicio;
+    let diferencia =
+        ahora - fechaInicio;
+
 
     if (diferencia < 0) {
         diferencia = 0;
     }
 
+
     const segundosTotales =
         Math.floor(diferencia / 1000);
 
+
     const dias =
-        Math.floor(segundosTotales / 86400);
+        Math.floor(
+            segundosTotales / 86400
+        );
+
 
     const horas =
         Math.floor(
             (segundosTotales % 86400) / 3600
         );
 
+
     const minutos =
         Math.floor(
             (segundosTotales % 3600) / 60
         );
+
 
     const segundos =
         segundosTotales % 60;
@@ -42,11 +71,14 @@ function actualizarContador() {
     document.getElementById("dias").textContent =
         dias;
 
+
     document.getElementById("horas").textContent =
         horas;
 
+
     document.getElementById("minutos").textContent =
         minutos;
+
 
     document.getElementById("segundos").textContent =
         segundos;
@@ -55,7 +87,11 @@ function actualizarContador() {
 
 actualizarContador();
 
-setInterval(actualizarContador, 1000);
+
+setInterval(
+    actualizarContador,
+    1000
+);
 
 
 /* ========================================
@@ -88,73 +124,11 @@ botonSorpresa.addEventListener(
 
             botonSorpresa.textContent =
                 "💝 Tengo algo para ti";
+
         }
 
     }
 );
-
-
-/* ========================================
-   CORAZONES FLOTANTES
-======================================== */
-
-function crearCorazon() {
-
-    const corazon =
-        document.createElement("div");
-
-
-    corazon.textContent = "❤️";
-
-
-    corazon.style.position =
-        "fixed";
-
-    corazon.style.left =
-        Math.random() * 100 + "vw";
-
-    corazon.style.bottom =
-        "-30px";
-
-    corazon.style.fontSize =
-        Math.random() * 18 + 14 + "px";
-
-    corazon.style.opacity =
-        "0.7";
-
-    corazon.style.pointerEvents =
-        "none";
-
-    corazon.style.zIndex =
-        "999";
-
-    corazon.style.transition =
-        "transform 6s linear, opacity 6s linear";
-
-
-    document.body.appendChild(corazon);
-
-
-    setTimeout(function () {
-
-        corazon.style.transform =
-            "translateY(-110vh)";
-
-        corazon.style.opacity =
-            "0";
-
-    }, 100);
-
-
-    setTimeout(function () {
-
-        corazon.remove();
-
-    }, 6100);
-}
-
-
-setInterval(crearCorazon, 900);
 
 
 /* ========================================
@@ -171,8 +145,6 @@ const botonMusica =
 musicaFondo.volume = 0.5;
 
 
-/* Actualizar texto del botón */
-
 function actualizarBotonMusica() {
 
     if (musicaFondo.paused) {
@@ -184,11 +156,10 @@ function actualizarBotonMusica() {
 
         botonMusica.textContent =
             "🔊 Pausar música";
+
     }
 }
 
-
-/* Reproducir */
 
 function reproducirMusica() {
 
@@ -206,8 +177,6 @@ function reproducirMusica() {
 }
 
 
-/* Botón de música */
-
 botonMusica.addEventListener(
     "click",
     function () {
@@ -221,48 +190,249 @@ botonMusica.addEventListener(
             musicaFondo.pause();
 
             actualizarBotonMusica();
+
         }
 
     }
 );
 
 
-/* Intentar iniciar automáticamente */
+/* ========================================
+   CORAZONES FLOTANTES
+======================================== */
 
-window.addEventListener(
-    "load",
+function crearCorazon() {
+
+    const corazon =
+        document.createElement("div");
+
+
+    corazon.className =
+        "corazon-flotante";
+
+
+    const corazones = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💓",
+        "💞"
+    ];
+
+
+    corazon.textContent =
+        corazones[
+            Math.floor(
+                Math.random() *
+                corazones.length
+            )
+        ];
+
+
+    corazon.style.left =
+        Math.random() * 100 + "vw";
+
+
+    corazon.style.fontSize =
+        Math.random() * 20 + 15 + "px";
+
+
+    corazon.style.animationDuration =
+        Math.random() * 3 + 5 + "s";
+
+
+    document.body.appendChild(
+        corazon
+    );
+
+
+    setTimeout(function () {
+
+        corazon.remove();
+
+    }, 9000);
+
+}
+
+
+setInterval(
+    crearCorazon,
+    900
+);
+
+
+/* ========================================
+   FOTOS AMPLIABLES
+======================================== */
+
+const fotos =
+    document.querySelectorAll(
+        ".foto img"
+    );
+
+
+const modalFoto =
+    document.getElementById(
+        "modalFoto"
+    );
+
+
+const imagenGrande =
+    document.getElementById(
+        "imagenGrande"
+    );
+
+
+const cerrarFoto =
+    document.getElementById(
+        "cerrarFoto"
+    );
+
+
+fotos.forEach(function (foto) {
+
+    foto.addEventListener(
+        "click",
+        function () {
+
+            imagenGrande.src =
+                foto.src;
+
+            imagenGrande.alt =
+                foto.alt;
+
+            modalFoto.classList.add(
+                "mostrar"
+            );
+
+        }
+    );
+
+});
+
+
+cerrarFoto.addEventListener(
+    "click",
     function () {
 
-        reproducirMusica();
-
-    }
-);
-
-
-/* Primera interacción con la página */
-
-document.addEventListener(
-    "click",
-    function iniciarMusica(evento) {
-
-        if (
-            evento.target === botonMusica
-        ) {
-            return;
-        }
-
-
-        if (musicaFondo.paused) {
-
-            reproducirMusica();
-
-        }
-
-
-        document.removeEventListener(
-            "click",
-            iniciarMusica
+        modalFoto.classList.remove(
+            "mostrar"
         );
 
     }
 );
+
+
+modalFoto.addEventListener(
+    "click",
+    function (evento) {
+
+        if (
+            evento.target === modalFoto
+        ) {
+
+            modalFoto.classList.remove(
+                "mostrar"
+            );
+
+        }
+
+    }
+);
+
+
+/* ========================================
+   CERRAR FOTO CON ESCAPE
+======================================== */
+
+document.addEventListener(
+    "keydown",
+    function (evento) {
+
+        if (
+            evento.key === "Escape"
+        ) {
+
+            modalFoto.classList.remove(
+                "mostrar"
+            );
+
+        }
+
+    }
+);
+
+
+/* ========================================
+   SORPRESA FINAL
+======================================== */
+
+const botonFinal =
+    document.getElementById(
+        "botonFinal"
+    );
+
+
+const mensajeFinal =
+    document.getElementById(
+        "mensajeFinal"
+    );
+
+
+botonFinal.addEventListener(
+    "click",
+    function () {
+
+        mensajeFinal.classList.add(
+            "mostrar"
+        );
+
+
+        botonFinal.textContent =
+            "❤️ Siempre contigo";
+
+
+        lanzarCorazonesFinales();
+
+
+        mensajeFinal.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }
+);
+
+
+/* ========================================
+   EXPLOSIÓN DE CORAZONES
+======================================== */
+
+function lanzarCorazonesFinales() {
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+        setTimeout(
+            function () {
+
+                crearCorazon();
+
+            },
+            i * 100
+        );
+
+    }
+
+}
+
+
+/* ========================================
+   INICIO
+======================================== */
+
+actualizarBotonMusica();
