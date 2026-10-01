@@ -1,5 +1,11 @@
 /* ========================================
-   FECHA DE INICIO
+   ROMÁNTICA 3.ª VERSIÓN
+   PARA YOSELIN ❤️
+======================================== */
+
+
+/* ========================================
+   FECHA DE INICIO DE LA RELACIÓN
 ======================================== */
 
 const fechaInicio = new Date("2024-10-27T00:00:00");
@@ -16,13 +22,17 @@ const abrirPagina =
     document.getElementById("abrirPagina");
 
 
-abrirPagina.addEventListener("click", function () {
+if (abrirPagina && bienvenida) {
 
-    bienvenida.classList.add("ocultar");
+    abrirPagina.addEventListener("click", function () {
 
-    reproducirMusica();
+        bienvenida.classList.add("ocultar");
 
-});
+        reproducirMusica();
+
+    });
+
+}
 
 
 /* ========================================
@@ -38,7 +48,9 @@ function actualizarContador() {
 
 
     if (diferencia < 0) {
+
         diferencia = 0;
+
     }
 
 
@@ -68,20 +80,50 @@ function actualizarContador() {
         segundosTotales % 60;
 
 
-    document.getElementById("dias").textContent =
-        dias;
+    const elementoDias =
+        document.getElementById("dias");
+
+    const elementoHoras =
+        document.getElementById("horas");
+
+    const elementoMinutos =
+        document.getElementById("minutos");
+
+    const elementoSegundos =
+        document.getElementById("segundos");
 
 
-    document.getElementById("horas").textContent =
-        horas;
+    if (elementoDias) {
+
+        elementoDias.textContent =
+            dias;
+
+    }
 
 
-    document.getElementById("minutos").textContent =
-        minutos;
+    if (elementoHoras) {
+
+        elementoHoras.textContent =
+            horas;
+
+    }
 
 
-    document.getElementById("segundos").textContent =
-        segundos;
+    if (elementoMinutos) {
+
+        elementoMinutos.textContent =
+            minutos;
+
+    }
+
+
+    if (elementoSegundos) {
+
+        elementoSegundos.textContent =
+            segundos;
+
+    }
+
 }
 
 
@@ -105,30 +147,34 @@ const mensajeSorpresa =
     document.getElementById("mensajeSorpresa");
 
 
-botonSorpresa.addEventListener(
-    "click",
-    function () {
+if (botonSorpresa && mensajeSorpresa) {
 
-        const abierto =
-            mensajeSorpresa.classList.toggle(
-                "mostrar"
-            );
+    botonSorpresa.addEventListener(
+        "click",
+        function () {
+
+            const abierto =
+                mensajeSorpresa.classList.toggle(
+                    "mostrar"
+                );
 
 
-        if (abierto) {
+            if (abierto) {
 
-            botonSorpresa.textContent =
-                "❤️ Te amo, Yoselin";
+                botonSorpresa.textContent =
+                    "❤️ Te amo, Yoselin";
 
-        } else {
+            } else {
 
-            botonSorpresa.textContent =
-                "💝 Tengo algo para ti";
+                botonSorpresa.textContent =
+                    "💝 Tengo algo para ti";
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
 /* ========================================
@@ -142,10 +188,21 @@ const botonMusica =
     document.getElementById("botonMusica");
 
 
-musicaFondo.volume = 0.5;
+if (musicaFondo) {
+
+    musicaFondo.volume = 0.5;
+
+}
 
 
 function actualizarBotonMusica() {
+
+    if (!musicaFondo || !botonMusica) {
+
+        return;
+
+    }
+
 
     if (musicaFondo.paused) {
 
@@ -158,10 +215,18 @@ function actualizarBotonMusica() {
             "🔊 Pausar música";
 
     }
+
 }
 
 
 function reproducirMusica() {
+
+    if (!musicaFondo) {
+
+        return;
+
+    }
+
 
     musicaFondo.play()
         .then(function () {
@@ -174,27 +239,32 @@ function reproducirMusica() {
             actualizarBotonMusica();
 
         });
+
 }
 
 
-botonMusica.addEventListener(
-    "click",
-    function () {
+if (botonMusica && musicaFondo) {
 
-        if (musicaFondo.paused) {
+    botonMusica.addEventListener(
+        "click",
+        function () {
 
-            reproducirMusica();
+            if (musicaFondo.paused) {
 
-        } else {
+                reproducirMusica();
 
-            musicaFondo.pause();
+            } else {
 
-            actualizarBotonMusica();
+                musicaFondo.pause();
+
+                actualizarBotonMusica();
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
 /* ========================================
@@ -290,56 +360,76 @@ const cerrarFoto =
     );
 
 
-fotos.forEach(function (foto) {
+if (
+    fotos.length > 0 &&
+    modalFoto &&
+    imagenGrande
+) {
 
-    foto.addEventListener(
-        "click",
-        function () {
+    fotos.forEach(function (foto) {
 
-            imagenGrande.src =
-                foto.src;
+        foto.addEventListener(
+            "click",
+            function () {
 
-            imagenGrande.alt =
-                foto.alt;
+                imagenGrande.src =
+                    foto.src;
 
-            modalFoto.classList.add(
-                "mostrar"
-            );
+                imagenGrande.alt =
+                    foto.alt;
 
-        }
-    );
+                modalFoto.classList.add(
+                    "mostrar"
+                );
 
-});
-
-
-cerrarFoto.addEventListener(
-    "click",
-    function () {
-
-        modalFoto.classList.remove(
-            "mostrar"
+            }
         );
 
-    }
-);
+    });
+
+}
 
 
-modalFoto.addEventListener(
-    "click",
-    function (evento) {
+/* ========================================
+   CERRAR MODAL DE FOTOS
+======================================== */
 
-        if (
-            evento.target === modalFoto
-        ) {
+if (cerrarFoto && modalFoto) {
+
+    cerrarFoto.addEventListener(
+        "click",
+        function () {
 
             modalFoto.classList.remove(
                 "mostrar"
             );
 
         }
+    );
 
-    }
-);
+}
+
+
+if (modalFoto) {
+
+    modalFoto.addEventListener(
+        "click",
+        function (evento) {
+
+            if (
+                evento.target === modalFoto
+            ) {
+
+                modalFoto.classList.remove(
+                    "mostrar"
+                );
+
+            }
+
+        }
+    );
+
+}
 
 
 /* ========================================
@@ -351,7 +441,8 @@ document.addEventListener(
     function (evento) {
 
         if (
-            evento.key === "Escape"
+            evento.key === "Escape" &&
+            modalFoto
         ) {
 
             modalFoto.classList.remove(
@@ -380,29 +471,36 @@ const mensajeFinal =
     );
 
 
-botonFinal.addEventListener(
-    "click",
-    function () {
+if (
+    botonFinal &&
+    mensajeFinal
+) {
 
-        mensajeFinal.classList.add(
-            "mostrar"
-        );
+    botonFinal.addEventListener(
+        "click",
+        function () {
 
-
-        botonFinal.textContent =
-            "❤️ Siempre contigo";
-
-
-        lanzarCorazonesFinales();
+            mensajeFinal.classList.add(
+                "mostrar"
+            );
 
 
-        mensajeFinal.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
+            botonFinal.textContent =
+                "❤️ Siempre contigo";
 
-    }
-);
+
+            lanzarCorazonesFinales();
+
+
+            mensajeFinal.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+    );
+
+}
 
 
 /* ========================================
