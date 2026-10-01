@@ -48,8 +48,16 @@ button {
     padding: 25px;
 
     background:
-        radial-gradient(circle at top, #ffdce8, transparent 45%),
-        linear-gradient(135deg, #fff0f5, #ffd5e2);
+        radial-gradient(
+            circle at top,
+            #ffdce8,
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #fff0f5,
+            #ffd5e2
+        );
 
     transition:
         opacity 1s ease,
@@ -178,9 +186,21 @@ button {
     text-align: center;
 
     background:
-        radial-gradient(circle at 20% 20%, #ffe4ec, transparent 30%),
-        radial-gradient(circle at 80% 80%, #ffd7e3, transparent 30%),
-        linear-gradient(135deg, #fff8fa, #ffeaf1);
+        radial-gradient(
+            circle at 20% 20%,
+            #ffe4ec,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            #ffd7e3,
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #fff8fa,
+            #ffeaf1
+        );
 }
 
 .corazones {
@@ -351,6 +371,249 @@ button {
 
 
 /* ========================================
+   NUESTRA HISTORIA
+======================================== */
+
+.historia-seccion {
+    padding: 110px 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff7fa,
+            #ffeaf1
+        );
+}
+
+.historia-titulo {
+    max-width: 750px;
+
+    margin: 0 auto 70px;
+
+    text-align: center;
+}
+
+.historia-titulo h2 {
+    margin: 18px 0;
+
+    font-size: clamp(
+        35px,
+        7vw,
+        55px
+    );
+
+    color: #9e3152;
+}
+
+.historia-titulo p:last-child {
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #72505c;
+}
+
+
+/* ========================================
+   LÍNEA DE TIEMPO
+======================================== */
+
+.linea-tiempo {
+    position: relative;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 10px 0;
+}
+
+
+/* Línea central */
+
+.linea-tiempo::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 3px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            to bottom,
+            #d36b88,
+            #f1a8bb,
+            #d36b88
+        );
+
+    border-radius: 10px;
+}
+
+
+/* ========================================
+   MOMENTOS
+======================================== */
+
+.momento {
+    position: relative;
+
+    width: 50%;
+
+    padding: 20px 50px 45px;
+}
+
+.momento:nth-child(odd) {
+    left: 0;
+
+    text-align: right;
+}
+
+.momento:nth-child(even) {
+    left: 50%;
+
+    text-align: left;
+}
+
+
+/* ========================================
+   PUNTO
+======================================== */
+
+.momento-punto {
+    position: absolute;
+
+    top: 25px;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 3px solid #d36b88;
+
+    box-shadow:
+        0 5px 20px rgba(
+            184,
+            61,
+            97,
+            0.18
+        );
+
+    font-size: 21px;
+
+    z-index: 2;
+
+    animation:
+        latido 2s infinite;
+}
+
+.momento:nth-child(odd)
+.momento-punto {
+
+    right: -24px;
+}
+
+.momento:nth-child(even)
+.momento-punto {
+
+    left: -24px;
+}
+
+
+/* ========================================
+   CONTENIDO DEL MOMENTO
+======================================== */
+
+.momento-contenido {
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.85
+        );
+
+    box-shadow:
+        0 15px 40px rgba(
+            100,
+            30,
+            50,
+            0.08
+        );
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.momento-contenido:hover {
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 20px 45px rgba(
+            100,
+            30,
+            50,
+            0.14
+        );
+}
+
+.momento-fecha {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: #b04c6b;
+
+    font-weight: bold;
+}
+
+.momento-contenido h3 {
+
+    margin-bottom: 12px;
+
+    font-size: 25px;
+
+    color: #9e3152;
+}
+
+.momento-contenido p {
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: #68434f;
+}
+
+
+/* ========================================
    CONTADOR
 ======================================== */
 
@@ -376,7 +639,11 @@ button {
 .contador-contenido h2 {
     margin: 15px 0;
 
-    font-size: clamp(35px, 7vw, 55px);
+    font-size: clamp(
+        35px,
+        7vw,
+        55px
+    );
 
     color: #9e3152;
 }
@@ -407,16 +674,31 @@ button {
 
     border-radius: 20px;
 
-    background: rgba(255, 255, 255, 0.8);
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.8
+        );
 
     box-shadow:
-        0 10px 30px rgba(100, 30, 50, 0.08);
+        0 10px 30px rgba(
+            100,
+            30,
+            50,
+            0.08
+        );
 }
 
 .tiempo span {
     display: block;
 
-    font-size: clamp(35px, 6vw, 55px);
+    font-size: clamp(
+        35px,
+        6vw,
+        55px
+    );
 
     font-weight: bold;
 
@@ -443,9 +725,11 @@ button {
 ======================================== */
 
 .boton-sorpresa {
+
     padding: 15px 28px;
 
     border: none;
+
     border-radius: 40px;
 
     background: #b83d61;
@@ -459,10 +743,13 @@ button {
 }
 
 .boton-sorpresa:hover {
-    transform: scale(1.05);
+
+    transform:
+        scale(1.05);
 }
 
 .mensaje-sorpresa {
+
     max-width: 600px;
 
     max-height: 0;
@@ -486,6 +773,7 @@ button {
 }
 
 .mensaje-sorpresa.mostrar {
+
     max-height: 500px;
 
     padding: 30px;
@@ -494,6 +782,7 @@ button {
 }
 
 .mensaje-sorpresa h3 {
+
     margin-bottom: 15px;
 
     font-size: 28px;
@@ -502,6 +791,7 @@ button {
 }
 
 .mensaje-sorpresa p {
+
     margin-bottom: 12px;
 
     line-height: 1.7;
@@ -513,34 +803,45 @@ button {
 ======================================== */
 
 .fotos-seccion {
+
     padding: 100px 20px;
 
     background: #fff;
 }
 
 .titulo-fotos {
+
     max-width: 700px;
 
-    margin: 0 auto 50px;
+    margin:
+        0 auto 50px;
 
     text-align: center;
 }
 
 .titulo-fotos h2 {
+
     margin: 15px 0;
 
-    font-size: clamp(35px, 7vw, 55px);
+    font-size:
+        clamp(
+            35px,
+            7vw,
+            55px
+        );
 
     color: #9e3152;
 }
 
 .titulo-fotos > p:last-child {
+
     line-height: 1.7;
 
     color: #72505c;
 }
 
 .galeria {
+
     display: grid;
 
     grid-template-columns:
@@ -554,6 +855,7 @@ button {
 }
 
 .foto {
+
     overflow: hidden;
 
     border-radius: 25px;
@@ -561,17 +863,25 @@ button {
     background: white;
 
     box-shadow:
-        0 15px 40px rgba(100, 30, 50, 0.12);
+        0 15px 40px rgba(
+            100,
+            30,
+            50,
+            0.12
+        );
 
     transition:
         transform 0.4s ease;
 }
 
 .foto:hover {
-    transform: translateY(-8px);
+
+    transform:
+        translateY(-8px);
 }
 
 .foto img {
+
     display: block;
 
     width: 100%;
@@ -587,22 +897,27 @@ button {
 }
 
 .foto:hover img {
-    transform: scale(1.04);
+
+    transform:
+        scale(1.04);
 }
 
 .foto-info {
+
     padding: 20px;
 
     text-align: center;
 }
 
 .foto-info h3 {
+
     margin-bottom: 8px;
 
     color: #9e3152;
 }
 
 .foto-info p {
+
     line-height: 1.6;
 
     color: #72505c;
@@ -614,10 +929,13 @@ button {
 ======================================== */
 
 .sorpresa-final {
+
     min-height: 100vh;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     padding: 100px 20px;
@@ -625,15 +943,25 @@ button {
     text-align: center;
 
     background:
-        radial-gradient(circle at center, #ffdce7, transparent 55%),
-        linear-gradient(135deg, #fff1f5, #ffdce7);
+        radial-gradient(
+            circle at center,
+            #ffdce7,
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #fff1f5,
+            #ffdce7
+        );
 }
 
 .sorpresa-contenido {
+
     max-width: 750px;
 }
 
 .corazon-final {
+
     font-size: 85px;
 
     margin-bottom: 20px;
@@ -643,14 +971,21 @@ button {
 }
 
 .sorpresa-contenido h2 {
+
     margin: 20px 0;
 
-    font-size: clamp(35px, 7vw, 60px);
+    font-size:
+        clamp(
+            35px,
+            7vw,
+            60px
+        );
 
     color: #9e3152;
 }
 
 .sorpresa-contenido > p:not(.etiqueta) {
+
     margin-bottom: 25px;
 
     font-size: 19px;
@@ -661,9 +996,11 @@ button {
 }
 
 .boton-final {
+
     padding: 17px 30px;
 
     border: none;
+
     border-radius: 50px;
 
     background: #b83d61;
@@ -673,17 +1010,25 @@ button {
     font-size: 17px;
 
     box-shadow:
-        0 10px 30px rgba(184, 61, 97, 0.25);
+        0 10px 30px rgba(
+            184,
+            61,
+            97,
+            0.25
+        );
 
     transition:
         transform 0.3s ease;
 }
 
 .boton-final:hover {
-    transform: scale(1.05);
+
+    transform:
+        scale(1.05);
 }
 
 .mensaje-final {
+
     display: none;
 
     margin-top: 40px;
@@ -692,20 +1037,33 @@ button {
 
     border-radius: 30px;
 
-    background: rgba(255, 255, 255, 0.8);
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.8
+        );
 
     box-shadow:
-        0 20px 60px rgba(100, 30, 50, 0.15);
+        0 20px 60px rgba(
+            100,
+            30,
+            50,
+            0.15
+        );
 
     animation:
         aparecer 1s ease;
 }
 
 .mensaje-final.mostrar {
+
     display: block;
 }
 
 .lluvia-corazones {
+
     margin-bottom: 25px;
 
     font-size: 28px;
@@ -717,16 +1075,19 @@ button {
 }
 
 .mensaje-final h2 {
+
     margin-bottom: 20px;
 }
 
 .mensaje-final p {
+
     margin-bottom: 15px;
 
     font-size: 20px;
 }
 
 .mensaje-final .grande {
+
     font-size: 32px;
 
     font-weight: bold;
@@ -735,6 +1096,7 @@ button {
 }
 
 .final-amor {
+
     margin: 30px 0;
 
     font-size: 45px;
@@ -748,6 +1110,7 @@ button {
 }
 
 .firma-final {
+
     line-height: 1.7;
 }
 
@@ -757,6 +1120,7 @@ button {
 ======================================== */
 
 .modal-foto {
+
     position: fixed;
 
     inset: 0;
@@ -766,19 +1130,29 @@ button {
     display: none;
 
     justify-content: center;
+
     align-items: center;
 
     padding: 30px;
 
-    background: rgba(30, 10, 20, 0.9);
+    background:
+        rgba(
+            30,
+            10,
+            20,
+            0.9
+        );
 }
 
 .modal-foto.mostrar {
+
     display: flex;
 }
 
 .modal-foto img {
+
     max-width: 95%;
+
     max-height: 90vh;
 
     object-fit: contain;
@@ -786,16 +1160,23 @@ button {
     border-radius: 15px;
 
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.4);
+        0 20px 60px rgba(
+            0,
+            0,
+            0,
+            0.4
+        );
 
     animation:
         zoom 0.4s ease;
 }
 
 .cerrar-foto {
+
     position: absolute;
 
     top: 20px;
+
     right: 30px;
 
     color: white;
@@ -816,72 +1197,103 @@ button {
 
     0%,
     100% {
-        transform: scale(1);
+
+        transform:
+            scale(1);
     }
 
     50% {
-        transform: scale(1.12);
+
+        transform:
+            scale(1.12);
     }
 }
+
 
 @keyframes aparecer {
 
     from {
+
         opacity: 0;
     }
 
     to {
+
         opacity: 1;
     }
 }
+
 
 @keyframes subir {
 
     from {
+
         opacity: 0;
-        transform: translateY(30px);
+
+        transform:
+            translateY(30px);
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
+
 
 @keyframes flecha {
 
     0%,
     100% {
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(10px);
+
+        transform:
+            translateY(10px);
     }
 }
+
 
 @keyframes flotar {
 
     0%,
     100% {
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(-10px);
+
+        transform:
+            translateY(-10px);
     }
 }
+
 
 @keyframes zoom {
 
     from {
+
         opacity: 0;
-        transform: scale(0.8);
+
+        transform:
+            scale(0.8);
     }
 
     to {
+
         opacity: 1;
-        transform: scale(1);
+
+        transform:
+            scale(1);
     }
 }
 
@@ -891,6 +1303,7 @@ button {
 ======================================== */
 
 .corazon-flotante {
+
     position: fixed;
 
     bottom: -40px;
@@ -900,12 +1313,15 @@ button {
     z-index: 8000;
 
     animation:
-        subirCorazon 6s linear forwards;
+        subirCorazon
+        6s linear forwards;
 }
+
 
 @keyframes subirCorazon {
 
     0% {
+
         transform:
             translateY(0)
             rotate(0deg);
@@ -914,6 +1330,7 @@ button {
     }
 
     100% {
+
         transform:
             translateY(-110vh)
             rotate(25deg);
@@ -930,31 +1347,87 @@ button {
 @media (max-width: 768px) {
 
     .carta {
-        padding: 40px 25px;
+
+        padding:
+            40px 25px;
     }
 
+
     .contador {
+
         grid-template-columns:
             repeat(2, 1fr);
     }
 
+
     .galeria {
+
         grid-template-columns:
             1fr;
     }
 
+
     .foto img {
+
         height: 320px;
     }
 
+
     .boton-musica {
+
         top: 12px;
+
         right: 12px;
 
         font-size: 12px;
 
-        padding: 9px 13px;
+        padding:
+            9px 13px;
     }
+
+
+    /* Línea de tiempo */
+
+    .linea-tiempo::before {
+
+        left: 24px;
+
+        transform: none;
+    }
+
+
+    .momento,
+    .momento:nth-child(odd),
+    .momento:nth-child(even) {
+
+        width: 100%;
+
+        left: 0;
+
+        text-align: left;
+
+        padding:
+            20px 0 35px 70px;
+    }
+
+
+    .momento-punto,
+    .momento:nth-child(odd) .momento-punto,
+    .momento:nth-child(even) .momento-punto {
+
+        left: 0;
+
+        right: auto;
+
+        top: 20px;
+    }
+
+
+    .momento-contenido {
+
+        padding: 25px 20px;
+    }
+
 }
 
 
@@ -965,61 +1438,117 @@ button {
 @media (max-width: 600px) {
 
     .portada {
+
         padding-top: 90px;
     }
 
+
     .corazones {
+
         font-size: 22px;
     }
 
+
     .fecha {
+
         font-size: 16px;
     }
 
+
     .carta-seccion,
+    .historia-seccion,
     .contador-seccion,
     .fotos-seccion,
     .sorpresa-final {
-        padding: 70px 15px;
+
+        padding:
+            70px 15px;
     }
+
 
     .carta {
-        padding: 35px 20px;
+
+        padding:
+            35px 20px;
     }
 
+
     .carta p:not(.etiqueta):not(.firma) {
+
         font-size: 16px;
     }
 
-    .contador {
-        gap: 10px;
+
+    .historia-titulo {
+
+        margin-bottom: 50px;
     }
 
-    .tiempo {
-        padding: 20px 10px;
-    }
 
-    .tiempo span {
+    .historia-titulo h2 {
+
         font-size: 35px;
     }
 
+
+    .momento-contenido h3 {
+
+        font-size: 22px;
+    }
+
+
+    .momento-contenido p {
+
+        font-size: 15px;
+    }
+
+
+    .contador {
+
+        gap: 10px;
+    }
+
+
+    .tiempo {
+
+        padding:
+            20px 10px;
+    }
+
+
+    .tiempo span {
+
+        font-size: 35px;
+    }
+
+
     .tiempo small {
+
         font-size: 12px;
     }
 
+
     .foto img {
+
         height: 280px;
     }
 
+
     .mensaje-final {
-        padding: 35px 18px;
+
+        padding:
+            35px 18px;
     }
 
+
     .mensaje-final .grande {
+
         font-size: 27px;
     }
 
+
     .final-amor {
+
         font-size: 35px;
     }
 
@@ -1033,35 +1562,73 @@ button {
 @media (max-width: 380px) {
 
     .bienvenida h1 {
+
         font-size: 55px;
     }
 
+
     .bienvenida p {
+
         font-size: 17px;
     }
 
+
     .portada h1 {
+
         font-size: 55px;
     }
 
+
     .portada h2 {
+
         font-size: 25px;
     }
 
+
     .contador {
+
         gap: 7px;
     }
 
+
     .tiempo {
-        padding: 15px 5px;
+
+        padding:
+            15px 5px;
     }
 
+
     .tiempo span {
+
         font-size: 28px;
     }
 
+
     .foto img {
+
         height: 240px;
+    }
+
+
+    .momento {
+
+        padding-left: 62px;
+    }
+
+
+    .momento-punto {
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 18px;
+    }
+
+
+    .linea-tiempo::before {
+
+        left: 21px;
     }
 
 }
