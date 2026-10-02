@@ -1143,7 +1143,12 @@ body {
 
 
     .recuerdo-imagen {
-        height: 260px;
+        height: 180px;
+    }
+
+
+    .recuerdo-texto h3 {
+        font-size: 21px;
     }
 
 
@@ -1220,12 +1225,12 @@ body {
 
 
     .recuerdo-imagen {
-        height: 230px;
+        height: 170px;
     }
 
 
     .recuerdo-texto h3 {
-        font-size: 21px;
+        font-size: 20px;
     }
 
 
